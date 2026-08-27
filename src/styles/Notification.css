@@ -1,0 +1,82 @@
+.notification-toast {
+    position: fixed;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 280px;
+    max-width: 400px;
+    background: #1e1e1e;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+    z-index: 1000;
+    overflow: hidden;
+    white-space: normal;
+    transition: bottom 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                opacity 0.2s ease,
+                border-color 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.notification-toast.visible {
+    bottom: 25px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.notification-toast.wait {
+    border-color: #f39c12;
+}
+
+.notification-toast.success {
+    border-color: #2ecc71;
+}
+
+.notification-toast.error {
+    border-color: #e74c3c;
+}
+
+.notification-content {
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: break-word;
+    text-align: center;
+}
+
+.notification-timer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+}
+
+.notification-timer.success {
+    background-color: #2ecc71;
+    animation: countdown 5s linear forwards;
+}
+
+.notification-timer.error {
+    background-color: #e74c3c;
+    animation: countdown 5s linear forwards;
+}
+
+.notification-timer.wait {
+    width: 100%;
+    background: linear-gradient(90deg, #f39c12, #ffeaa7, #f39c12);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes countdown {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
